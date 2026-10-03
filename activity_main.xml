@@ -1,0 +1,1130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#090D16">
+
+    <LinearLayout
+        android:id="@+id/layoutTopHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingHorizontal="20dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="12dp"
+        android:gravity="center_vertical">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="FocusLock 3.5 — Living Sanctuary"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PRO GUARD"
+            android:textColor="#10B981"
+            android:textSize="11sp"
+            android:textStyle="bold"
+            android:paddingHorizontal="8dp"
+            android:paddingVertical="3dp"
+            android:background="@drawable/bg_pill" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/layoutTopHeader"
+        android:layout_above="@id/bottomNavBar">
+
+        <ScrollView
+            android:id="@+id/viewTimerTab"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp"
+                android:gravity="center_horizontal">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@drawable/bg_card"
+                    android:padding="24dp"
+                    android:gravity="center">
+                    <!-- Focus Mode Selector: Strict Session vs Non-Session Free Flow -->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:background="#090D16"
+                        android:padding="3dp"
+                        android:layout_marginBottom="12dp">
+                        <Button
+                            android:id="@+id/btnModeCountdown"
+                            android:layout_width="wrap_content"
+                            android:layout_height="34dp"
+                            android:text="⏳ Focus Session"
+                            android:textColor="#FFFFFF"
+                            android:textSize="11sp"
+                            android:textStyle="bold" />
+                        <Button
+                            android:id="@+id/btnModeNonSession"
+                            android:layout_width="wrap_content"
+                            android:layout_height="34dp"
+                            android:text="⏱️ Non-Session Timer"
+                            android:textColor="#64748B"
+                            android:textSize="11sp" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/tvTimer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="25:00"
+                        android:textColor="#10B981"
+                        android:textSize="58sp"
+                        android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/tvTimerSubtitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Ready to Focus"
+                        android:textColor="#94A3B8"
+                        android:textSize="13sp"
+                        android:layout_marginTop="4dp" />
+                    <TextView
+                        android:id="@+id/tvBlockedSummary"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0 apps configured to lock"
+                        android:textColor="#64748B"
+                        android:textSize="12sp"
+                        android:layout_marginTop="12dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="16dp">
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:background="@drawable/bg_card"
+                        android:padding="12dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Focus (mins)"
+                            android:textColor="#94A3B8"
+                            android:textSize="11sp"
+                            android:textStyle="bold" />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:layout_marginTop="4dp">
+                            <Button
+                                android:id="@+id/btnMinusFocus"
+                                android:layout_width="32dp"
+                                android:layout_height="36dp"
+                                android:text="-"
+                                android:padding="0dp"
+                                android:textColor="#FFFFFF" />
+                            <EditText
+                                android:id="@+id/etFocusMinutes"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:textColor="#FFFFFF"
+                                android:text="25"
+                                android:inputType="number"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+                            <Button
+                                android:id="@+id/btnPlusFocus"
+                                android:layout_width="32dp"
+                                android:layout_height="36dp"
+                                android:text="+"
+                                android:padding="0dp"
+                                android:textColor="#FFFFFF" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="12dp"
+                        android:orientation="vertical"
+                        android:background="@drawable/bg_card"
+                        android:padding="12dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Break (mins)"
+                            android:textColor="#38BDF8"
+                            android:textSize="11sp"
+                            android:textStyle="bold" />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:layout_marginTop="4dp">
+                            <Button
+                                android:id="@+id/btnMinusBreak"
+                                android:layout_width="32dp"
+                                android:layout_height="36dp"
+                                android:text="-"
+                                android:padding="0dp"
+                                android:textColor="#FFFFFF" />
+                            <EditText
+                                android:id="@+id/etBreakMinutes"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:textColor="#FFFFFF"
+                                android:text="5"
+                                android:inputType="number"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+                            <Button
+                                android:id="@+id/btnPlusBreak"
+                                android:layout_width="32dp"
+                                android:layout_height="36dp"
+                                android:text="+"
+                                android:padding="0dp"
+                                android:textColor="#FFFFFF" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scrollbars="none"
+                    android:layout_marginTop="16dp">
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <Button android:id="@+id/chip15" android:layout_width="wrap_content" android:layout_height="38dp" android:text="15m" android:textColor="#E2E8F0" />
+                        <Button android:id="@+id/chip25" android:layout_width="wrap_content" android:layout_height="38dp" android:layout_marginStart="8dp" android:text="25m" android:textColor="#E2E8F0" />
+                        <Button android:id="@+id/chip45" android:layout_width="wrap_content" android:layout_height="38dp" android:layout_marginStart="8dp" android:text="45m" android:textColor="#E2E8F0" />
+                        <Button android:id="@+id/chip60" android:layout_width="wrap_content" android:layout_height="38dp" android:layout_marginStart="8dp" android:text="60m" android:textColor="#E2E8F0" />
+                        <Button android:id="@+id/chip90" android:layout_width="wrap_content" android:layout_height="38dp" android:layout_marginStart="8dp" android:text="90m" android:textColor="#E2E8F0" />
+                        <Button android:id="@+id/chip120" android:layout_width="wrap_content" android:layout_height="38dp" android:layout_marginStart="8dp" android:text="120m" android:textColor="#E2E8F0" />
+                    </LinearLayout>
+                </HorizontalScrollView>
+
+                <!-- Ambient Sound Generator -->
+                <LinearLayout
+                    android:id="@+id/cardAmbientAudio"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@drawable/bg_card"
+                    android:padding="12dp"
+                    android:layout_marginTop="12dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="🎧 Ambient Focus Generator"
+                        android:textColor="#A5B4FC"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="8dp">
+                        <Button android:id="@+id/btnAudioMute" android:layout_width="0dp" android:layout_height="34dp" android:layout_weight="1" android:text="Mute" android:textSize="10sp" android:textColor="#FFFFFF" />
+                        <Button android:id="@+id/btnAudioRain" android:layout_width="0dp" android:layout_height="34dp" android:layout_weight="1" android:text="Rain" android:textSize="10sp" android:textColor="#94A3B8" android:layout_marginStart="4dp" />
+                        <Button android:id="@+id/btnAudioWhite" android:layout_width="0dp" android:layout_height="34dp" android:layout_weight="1" android:text="White" android:textSize="10sp" android:textColor="#94A3B8" android:layout_marginStart="4dp" />
+                        <Button android:id="@+id/btnAudioBinaural" android:layout_width="0dp" android:layout_height="34dp" android:layout_weight="1" android:text="Binaural" android:textSize="10sp" android:textColor="#94A3B8" android:layout_marginStart="4dp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Strict Nuclear Mode Switch -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/bg_card"
+                    android:padding="12dp"
+                    android:layout_marginTop="10dp">
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="💀 Strict Nuclear Mode"
+                            android:textColor="#FDA4AF"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Zero bypass: Disables emergency pass code"
+                            android:textColor="#64748B"
+                            android:textSize="10sp" />
+                    </LinearLayout>
+                    <Button
+                        android:id="@+id/btnToggleNuclear"
+                        android:layout_width="wrap_content"
+                        android:layout_height="34dp"
+                        android:text="OFF"
+                        android:textColor="#94A3B8"
+                        android:textSize="10sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnStartLock"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:layout_marginTop="20dp"
+                    android:text="Lock &amp; Focus Now"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:backgroundTint="#10B981"
+                    app:cornerRadius="14dp" />
+
+                <!-- Xiaomi/MIUI Helper Button -->
+                <Button
+                    android:id="@+id/btnMiuiPermission"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="⚠️ Xiaomi / MIUI: Allow Background Popups"
+                    android:textColor="#38BDF8"
+                    android:textSize="12sp"
+                    android:layout_marginTop="12dp" />
+            </LinearLayout>
+        </ScrollView>
+
+        <LinearLayout
+            android:id="@+id/viewAppsTab"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:visibility="gone">
+
+            <EditText
+                android:id="@+id/etSearchApps"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="@drawable/bg_search"
+                android:hint="🔍 Search apps to block..."
+                android:textColorHint="#64748B"
+                android:textColor="#FFFFFF"
+                android:paddingHorizontal="16dp"
+                android:textSize="14sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginTop="12dp">
+                <TextView
+                    android:id="@+id/tvAppsCountBadge"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="0 locked"
+                    android:textColor="#10B981"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+                <Button
+                    android:id="@+id/btnSelectAll"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:text="Select All"
+                    android:textSize="11sp" />
+                <Button
+                    android:id="@+id/btnClearAll"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:layout_marginStart="8dp"
+                    android:text="Clear All"
+                    android:textSize="11sp" />
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvApps"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_marginTop="12dp" />
+        </LinearLayout>
+
+        <ScrollView
+            android:id="@+id/viewStatsTab"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <GridLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:columnCount="2"
+                    android:rowCount="2">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:background="@drawable/bg_card"
+                        android:padding="16dp"
+                        android:layout_margin="4dp"
+                        android:orientation="vertical">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="TOTAL FOCUSED" android:textColor="#64748B" android:textSize="10sp" android:textStyle="bold" />
+                        <TextView android:id="@+id/tvTotalFocusHours" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0m" android:textColor="#10B981" android:textSize="22sp" android:textStyle="bold" android:layout_marginTop="4dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:background="@drawable/bg_card"
+                        android:padding="16dp"
+                        android:layout_margin="4dp"
+                        android:orientation="vertical">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="COMPLETED" android:textColor="#64748B" android:textSize="10sp" android:textStyle="bold" />
+                        <TextView android:id="@+id/tvSessionsCompleted" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0" android:textColor="#38BDF8" android:textSize="22sp" android:textStyle="bold" android:layout_marginTop="4dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:background="@drawable/bg_card"
+                        android:padding="16dp"
+                        android:layout_margin="4dp"
+                        android:orientation="vertical">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="DISCIPLINE" android:textColor="#64748B" android:textSize="10sp" android:textStyle="bold" />
+                        <TextView android:id="@+id/tvDisciplineScore" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="100%" android:textColor="#F59E0B" android:textSize="22sp" android:textStyle="bold" android:layout_marginTop="4dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:background="@drawable/bg_card"
+                        android:padding="16dp"
+                        android:layout_margin="4dp"
+                        android:orientation="vertical">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="BREACH ATTEMPTS" android:textColor="#64748B" android:textSize="10sp" android:textStyle="bold" />
+                        <TextView android:id="@+id/tvDisableAttempts" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0" android:textColor="#EF4444" android:textSize="22sp" android:textStyle="bold" android:layout_marginTop="4dp" />
+                    </LinearLayout>
+                </GridLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@drawable/bg_card"
+                    android:padding="20dp"
+                    android:layout_marginTop="16dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Weekly Focus Trend"
+                        android:textColor="#FFFFFF"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Daily minutes completed in strict lock mode"
+                        android:textColor="#64748B"
+                        android:textSize="12sp"
+                        android:layout_marginTop="2dp" />
+
+                    <LinearLayout
+                        android:id="@+id/layoutWeeklyGraph"
+                        android:layout_width="match_parent"
+                        android:layout_height="180dp"
+                        android:orientation="horizontal"
+                        android:gravity="bottom"
+                        android:layout_marginTop="20dp" />
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+
+        <LinearLayout
+            android:id="@+id/viewLogsTab"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Session Timeline"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+                <Button
+                    android:id="@+id/btnClearLogs"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:text="Clear History"
+                    android:textSize="11sp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvEmptyLogs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="No session history yet. Complete a focus session to see records here."
+                android:textColor="#64748B"
+                android:textSize="13sp"
+                android:layout_marginTop="40dp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvLogs"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_marginTop="12dp" />
+        </LinearLayout>
+
+    
+        <!-- TAB 5: LIVING FOCUS OCEAN SANCTUARY -->
+                          <!-- TAB 5: REALISTIC UNDERWATER LIVING OCEAN SANCTUARY -->
+        <ScrollView
+            android:id="@+id/viewOceanTab"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            android:visibility="gone">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+                <!-- Ocean Header -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="🌲 Living Ocean Sanctuary"
+                        android:textColor="#FFFFFF"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/tvGrownCount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="18 Flora &amp; Wildlife"
+                        android:textColor="#10B981"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Serene ocean biome with animated wildlife, diverse flora &amp; sunbeams."
+                    android:textColor="#94A3B8"
+                    android:textSize="12sp"
+                    android:layout_marginTop="3dp" />
+
+                <!-- Realistic Ocean Canvas Box with Motion Animations -->
+                <RelativeLayout
+                    android:id="@+id/oceanCanvas"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    android:layout_marginTop="14dp"
+                    android:background="@drawable/bg_card"
+                    android:padding="12dp">
+
+                    <!-- Ambient Sky Distant Ocean Silhouette & Sun -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="☀️"
+                        android:textSize="22sp"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentRight="true" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="🌲 ⛰️ 🌲 🌲 ⛰️ 🌲"
+                        android:textColor="#1E293B"
+                        android:textSize="12sp"
+                        android:layout_alignParentTop="true"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="6dp" />
+
+                    <!-- 3 Varieties of Butterflies (Blue Monarch, Amber, Golden Meadow) -->
+                    <TextView
+                        android:id="@+id/bubble1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="🦋"
+                        android:textSize="24sp"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginTop="10dp" />
+                    <TextView
+                        android:id="@+id/bubble2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="🦋"
+                        android:textSize="20sp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginTop="20dp" />
+                    <TextView
+                        android:id="@+id/bubble3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="🦋"
+                        android:textSize="18sp"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="40dp"
+                        android:layout_marginTop="16dp" />
+
+                    <!-- Floating Sparkles & Pollen -->
+                    <TextView
+                        android:id="@+id/sunbeam1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="✨"
+                        android:textSize="16sp"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginLeft="70dp"
+                        android:layout_marginTop="32dp" />
+                    <TextView
+                        android:id="@+id/sunbeam2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="✨"
+                        android:textSize="18sp"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="45dp" />
+
+                    <!-- Ocean Ground: 3+ Tree Varieties & 3+ Flower Varieties with Breeze Animation -->
+                    <LinearLayout
+                        android:id="@+id/layoutOceanPlants"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:orientation="horizontal"
+                        android:gravity="bottom|center_horizontal"
+                        android:layout_marginBottom="28dp">
+                        <!-- Tree 1: Blue Whale Leviathan -->
+                        <TextView
+                            android:id="@+id/marineTurtle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="🌳"
+                            android:textSize="36sp"
+                            android:layout_marginHorizontal="3dp" />
+                        <!-- Flower 1: Pink Coral -->
+                        <TextView
+                            android:id="@+id/marineJellyfish"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="🌸"
+                            android:textSize="22sp"
+                            android:layout_marginHorizontal="2dp" />
+                        <!-- Tree 2: Coral Reef Clownfish -->
+                        <TextView
+                            android:id="@+id/marineDolphin"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="🌲"
+                            android:textSize="32sp"
+                            android:layout_marginHorizontal="3dp" />
+                        <!-- Flower 2: Golden Sunflower -->
+                        <TextView
+                            android:id="@+id/marineClownfish"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="🌻"
+                            android:textSize="24sp"
+                            android:layout_marginHorizontal="2dp" />
+                        <!-- Tree 3: Golden Seahorse / Palm -->
+                        <TextView
+                            android:id="@+id/marineSeahorse"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="🌴"
+                            android:textSize="30sp"
+                            android:layout_marginHorizontal="3dp" />
+                        <!-- Flower 3: Wild Ocean Tulip -->
+                        <TextView
+                            android:id="@+id/marineStarfish"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="🌷"
+                            android:textSize="22sp"
+                            android:layout_marginHorizontal="2dp" />
+                        <!-- Tree 4: Evergreen Spruce -->
+                        <TextView
+                            android:id="@+id/marineWhale"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="🎄"
+                            android:textSize="34sp"
+                            android:layout_marginHorizontal="3dp" />
+                    </LinearLayout>
+
+                    <!-- Ocean Floor Wildlife & Pets: 2 Dogs (🐕, 🦮), Cat (🐈), Deer (🦌), Rabbit (🐇) & Pond (💧🦆) -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="26dp"
+                        android:layout_alignParentBottom="true"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical|center_horizontal"
+                        android:background="#15231D">
+                        <TextView
+                            android:id="@+id/marineCrab"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="🐕"
+                            android:textSize="15sp"
+                            android:layout_marginHorizontal="5dp" />
+                        <TextView
+                            android:id="@+id/marineOtter"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="🦮"
+                            android:textSize="15sp"
+                            android:layout_marginHorizontal="5dp" />
+                        <TextView
+                            android:id="@+id/wildDeer"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="🦌"
+                            android:textSize="15sp"
+                            android:layout_marginHorizontal="5dp" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="💧🦆"
+                            android:textSize="13sp"
+                            android:layout_marginHorizontal="5dp" />
+                        <TextView
+                            android:id="@+id/marineRay"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="🐇"
+                            android:textSize="15sp"
+                            android:layout_marginHorizontal="5dp" />
+                        <TextView
+                            android:id="@+id/petCat"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="🐈"
+                            android:textSize="15sp"
+                            android:layout_marginHorizontal="5dp" />
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <!-- Ocean Flora & Fauna Guide -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ocean Biome Species &amp; Milestones"
+                    android:textColor="#FFFFFF"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="16dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/bg_card"
+                    android:padding="12dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="🌸 3+ Flowers: Pink Coral (15m), Golden Sunflower (25m), Ocean Tulip (40m)"
+                        android:textColor="#E2E8F0"
+                        android:textSize="11sp"
+                        android:layout_marginBottom="6dp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="🌳 3+ Trees: Blue Whale Leviathan (50m+), Coral Reef Clownfish (30m), Golden Seahorse (Break)"
+                        android:textColor="#E2E8F0"
+                        android:textSize="11sp"
+                        android:layout_marginBottom="6dp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="🦋 3+ Butterflies: Blue Mountain Monarch, Amber Swallowtail, Golden Meadow"
+                        android:textColor="#38BDF8"
+                        android:textSize="11sp"
+                        android:layout_marginBottom="6dp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="🐕 Wildlife &amp; Pets: Shiba &amp; Retriever Dogs, Calico Cat, Deer, Rabbit, Pond Duck"
+                        android:textColor="#10B981"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+        <!-- TAB 6: DAILY HABIT TRACKER & BAR GRAPH -->
+        <ScrollView
+            android:id="@+id/viewHabitsTab"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            android:visibility="gone">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+                <!-- Habit Header -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="🎯 Daily Habit Tracker"
+                        android:textColor="#FFFFFF"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+                    <Button
+                        android:id="@+id/btnQuickAddHabit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="36dp"
+                        android:text="+ Habit"
+                        android:textSize="11sp" />
+                </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Track daily discipline routines with interactive completion graphs."
+                    android:textColor="#94A3B8"
+                    android:textSize="12sp"
+                    android:layout_marginTop="3dp" />
+
+                <!-- Weekly Habit Consistency Bar Graph Card -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@drawable/bg_card"
+                    android:padding="14dp"
+                    android:layout_marginTop="14dp">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Weekly Consistency Bar Graph"
+                            android:textColor="#FFFFFF"
+                            android:textSize="13sp"
+                            android:textStyle="bold" />
+                        <TextView
+                            android:id="@+id/tvHabitScore"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="85% Success"
+                            android:textColor="#10B981"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <!-- 7 Day Bar Graph Bars (Mon to Sun) -->
+                    <LinearLayout
+                        android:id="@+id/layoutHabitBarGraph"
+                        android:layout_width="match_parent"
+                        android:layout_height="110dp"
+                        android:orientation="horizontal"
+                        android:gravity="bottom"
+                        android:layout_marginTop="12dp">
+                        <!-- Mon -->
+                        <LinearLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical" android:gravity="bottom|center_horizontal">
+                            <View android:id="@+id/barMon" android:layout_width="20dp" android:layout_height="75dp" android:background="#10B981" />
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Mon" android:textColor="#94A3B8" android:textSize="10sp" android:layout_marginTop="4dp" />
+                        </LinearLayout>
+                        <!-- Tue -->
+                        <LinearLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical" android:gravity="bottom|center_horizontal">
+                            <View android:id="@+id/barTue" android:layout_width="20dp" android:layout_height="90dp" android:background="#10B981" />
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Tue" android:textColor="#94A3B8" android:textSize="10sp" android:layout_marginTop="4dp" />
+                        </LinearLayout>
+                        <!-- Wed -->
+                        <LinearLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical" android:gravity="bottom|center_horizontal">
+                            <View android:id="@+id/barWed" android:layout_width="20dp" android:layout_height="60dp" android:background="#38BDF8" />
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Wed" android:textColor="#94A3B8" android:textSize="10sp" android:layout_marginTop="4dp" />
+                        </LinearLayout>
+                        <!-- Thu -->
+                        <LinearLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical" android:gravity="bottom|center_horizontal">
+                            <View android:id="@+id/barThu" android:layout_width="20dp" android:layout_height="80dp" android:background="#10B981" />
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Thu" android:textColor="#94A3B8" android:textSize="10sp" android:layout_marginTop="4dp" />
+                        </LinearLayout>
+                        <!-- Fri -->
+                        <LinearLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical" android:gravity="bottom|center_horizontal">
+                            <View android:id="@+id/barFri" android:layout_width="20dp" android:layout_height="95dp" android:background="#10B981" />
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Fri" android:textColor="#94A3B8" android:textSize="10sp" android:layout_marginTop="4dp" />
+                        </LinearLayout>
+                        <!-- Sat -->
+                        <LinearLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical" android:gravity="bottom|center_horizontal">
+                            <View android:id="@+id/barSat" android:layout_width="20dp" android:layout_height="70dp" android:background="#38BDF8" />
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Sat" android:textColor="#94A3B8" android:textSize="10sp" android:layout_marginTop="4dp" />
+                        </LinearLayout>
+                        <!-- Sun -->
+                        <LinearLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical" android:gravity="bottom|center_horizontal">
+                            <View android:id="@+id/barSun" android:layout_width="20dp" android:layout_height="85dp" android:background="#F59E0B" />
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Sun" android:textColor="#10B981" android:textSize="10sp" android:textStyle="bold" android:layout_marginTop="4dp" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Daily Habits List (Interactive Checkboxes) -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Today's Target Habits"
+                    android:textColor="#FFFFFF"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="16dp" />
+
+                <!-- Habit 1: Deep Work -->
+                <LinearLayout
+                    android:id="@+id/habitItem1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/bg_card"
+                    android:padding="12dp"
+                    android:layout_marginTop="8dp">
+                    <CheckBox
+                        android:id="@+id/cbHabit1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true" />
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:layout_marginStart="8dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="🧠 Deep Work (No Phone)"
+                            android:textColor="#FFFFFF"
+                            android:textSize="13sp"
+                            android:textStyle="bold" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Productivity • 🔥 6 day streak"
+                            android:textColor="#94A3B8"
+                            android:textSize="11sp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Habit 2: Read 20 Pages -->
+                <LinearLayout
+                    android:id="@+id/habitItem2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/bg_card"
+                    android:padding="12dp"
+                    android:layout_marginTop="8dp">
+                    <CheckBox
+                        android:id="@+id/cbHabit2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true" />
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:layout_marginStart="8dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="📚 Read 20 Pages"
+                            android:textColor="#FFFFFF"
+                            android:textSize="13sp"
+                            android:textStyle="bold" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Learning • 🔥 4 day streak"
+                            android:textColor="#94A3B8"
+                            android:textSize="11sp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Habit 3: Hydration -->
+                <LinearLayout
+                    android:id="@+id/habitItem3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/bg_card"
+                    android:padding="12dp"
+                    android:layout_marginTop="8dp">
+                    <CheckBox
+                        android:id="@+id/cbHabit3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="false" />
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:layout_marginStart="8dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="💧 Hydration (2.5L Water)"
+                            android:textColor="#FFFFFF"
+                            android:textSize="13sp"
+                            android:textStyle="bold" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Health • 🔥 7 day streak"
+                            android:textColor="#94A3B8"
+                            android:textSize="11sp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Habit 4: Digital Sunset -->
+                <LinearLayout
+                    android:id="@+id/habitItem4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/bg_card"
+                    android:padding="12dp"
+                    android:layout_marginTop="8dp">
+                    <CheckBox
+                        android:id="@+id/cbHabit4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="false" />
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:layout_marginStart="8dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="🌅 Evening Digital Sunset"
+                            android:textColor="#FFFFFF"
+                            android:textSize="13sp"
+                            android:textStyle="bold" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Mindset • 🔥 3 day streak"
+                            android:textColor="#94A3B8"
+                            android:textSize="11sp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+
+    </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/bottomNavBar"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:layout_alignParentBottom="true"
+        android:background="#0F172A"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <LinearLayout android:id="@+id/tabBtnTimer" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:orientation="vertical" android:clickable="true" android:focusable="true">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="⚡" android:textSize="18sp" />
+            <TextView android:id="@+id/tvTabTimerLabel" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Timer" android:textColor="#10B981" android:textSize="11sp" android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout android:id="@+id/tabBtnApps" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:orientation="vertical" android:clickable="true" android:focusable="true">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="📱" android:textSize="18sp" />
+            <TextView android:id="@+id/tvTabAppsLabel" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Blocklist" android:textColor="#64748B" android:textSize="11sp" android:textStyle="bold" />
+        </LinearLayout>
+
+                          <LinearLayout android:id="@+id/tabBtnOcean" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:orientation="vertical" android:clickable="true" android:focusable="true">                      <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🌸" android:textSize="18sp" />                      <TextView android:id="@+id/tvTabOceanLabel" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Ocean" android:textColor="#64748B" android:textSize="11sp" android:textStyle="bold" />                  </LinearLayout>
+                          <LinearLayout android:id="@+id/tabBtnHabits" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:orientation="vertical" android:clickable="true" android:focusable="true">                      <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🎯" android:textSize="16sp" />                      <TextView android:id="@+id/tvTabHabitsLabel" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Habits" android:textColor="#64748B" android:textSize="10sp" android:textStyle="bold" />                  </LinearLayout>
+        <LinearLayout android:id="@+id/tabBtnStats" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:orientation="vertical" android:clickable="true" android:focusable="true">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="📊" android:textSize="18sp" />
+            <TextView android:id="@+id/tvTabStatsLabel" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Graphs" android:textColor="#64748B" android:textSize="11sp" android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout android:id="@+id/tabBtnLogs" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:orientation="vertical" android:clickable="true" android:focusable="true">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="📜" android:textSize="18sp" />
+            <TextView android:id="@+id/tvTabLogsLabel" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Logs" android:textColor="#64748B" android:textSize="11sp" android:textStyle="bold" />
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

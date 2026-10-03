@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="0dp"
+    android:layout_height="match_parent"
+    android:layout_weight="1"
+    android:orientation="vertical"
+    android:gravity="bottom|center_horizontal"
+    android:layout_marginHorizontal="2dp">
+    <TextView
+        android:id="@+id/tvBarMinutes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="25m"
+        android:textColor="#64748B"
+        android:textSize="10sp"
+        android:layout_marginBottom="4dp" />
+    <View
+        android:id="@+id/viewBarFill"
+        android:layout_width="16dp"
+        android:layout_height="50dp"
+        android:background="#10B981" />
+    <TextView
+        android:id="@+id/tvBarDay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mon"
+        android:textColor="#94A3B8"
+        android:textSize="11sp"
+        android:textStyle="bold"
+        android:layout_marginTop="6dp" />
+</LinearLayout>

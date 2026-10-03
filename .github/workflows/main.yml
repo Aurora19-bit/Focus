@@ -22,6 +22,28 @@ jobs:
         with:
           gradle-version: 8.7
 
+      - name: Add missing resources
+        run: |
+          R=app/src/main/res
+          mkdir -p $R/anim
+          cat > $R/anim/butterfly_float.xml <<'EOF2'
+          <set xmlns:android="http://schemas.android.com/apk/res/android" android:interpolator="@android:anim/linear_interpolator">
+              <translate android:fromXDelta="0" android:toXDelta="10dp" android:fromYDelta="0" android:toYDelta="-15dp" android:duration="1200" android:repeatMode="reverse" android:repeatCount="infinite" />
+          </set>
+          EOF2
+          cat > $R/anim/sparkle_pulse.xml <<'EOF2'
+          <set xmlns:android="http://schemas.android.com/apk/res/android">
+              <scale android:fromXScale="0.8" android:toXScale="1.2" android:fromYScale="0.8" android:toYScale="1.2" android:pivotX="50%" android:pivotY="50%" android:duration="800" android:repeatMode="reverse" android:repeatCount="infinite" />
+          </set>
+          EOF2
+          cat > $R/anim/plant_breeze.xml <<'EOF2'
+          <set xmlns:android="http://schemas.android.com/apk/res/android">
+              <rotate android:fromDegrees="-3" android:toDegrees="3" android:pivotX="50%" android:pivotY="100%" android:duration="1500" android:repeatMode="reverse" android:repeatCount="infinite" />
+          </set>
+          EOF2
+          cp $R/drawable/ic_launcher.xml $R/drawable/ic_launcher_foreground.xml
+          cp $R/mipmap-anydpi-v26/ic_launcher.xml $R/mipmap-anydpi-v26/ic_launcher_round.xml
+
       - name: Build debug APK
         run: gradle :app:assembleDebug --stacktrace --no-daemon
 
@@ -31,4 +53,3 @@ jobs:
           name: FocusLock-APK
           path: app/build/outputs/apk/debug/*.apk
           retention-days: 14
-          

@@ -82,6 +82,48 @@ jobs:
           }
           EOF2
 
+      - name: Put project files in the right folders
+        run: |
+          M=app/src/main
+          R=$M/res
+          J=$M/java/com/vidhya/focuslock
+          mkdir -p $J $R/layout $R/drawable $R/xml $R/values
+          pick() { find . -type f -name "$1" -not -path "./.git/*" -not -path "./app/src/*" -not -path "./app/build/*" -exec cp -v {} "$2" \; ; }
+          pick "*.kt" $J/
+          pick "activity_*.xml" $R/layout/
+          pick "item_*.xml" $R/layout/
+          pick "bg_*.xml" $R/drawable/
+          pick "accessibility_service_config.xml" $R/xml/
+          pick "device_admin_receiver.xml" $R/xml/
+          pick "colors.xml" $R/values/
+          pick "strings.xml" $R/values/
+          pick "themes.xml" $R/values/
+          pick "AndroidManifest.xml" $M/
+          pick "proguard-rules.pro" app/
+          [ -f $R/drawable/ic_launcher.xml ] || pick "ic_launcher.xml" $R/drawable/
+          [ -f $R/values/colors.xml ] || cat > $R/values/colors.xml <<'EOF2'
+          <resources>
+              <color name="white">#FFFFFFFF</color>
+              <color name="emerald_primary">#10B981</color>
+              <color name="emerald_dark">#047857</color>
+              <color name="bg_dark">#0F172A</color>
+          </resources>
+          EOF2
+          [ -f $R/values/strings.xml ] || echo '<resources><string name="app_name">FocusLock</string></resources>' > $R/values/strings.xml
+          [ -f $R/values/themes.xml ] || cat > $R/values/themes.xml <<'EOF2'
+          <resources>
+              <style name="Theme.FocusLock" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+                  <item name="colorPrimary">@color/emerald_primary</item>
+                  <item name="colorSecondary">@color/emerald_primary</item>
+                  <item name="android:statusBarColor">@color/bg_dark</item>
+              </style>
+              <style name="Theme.FocusLock.Fullscreen" parent="Theme.FocusLock"><item name="android:windowFullscreen">true</item></style>
+              <style name="Theme.FocusLock.Dialog" parent="Theme.MaterialComponents.DayNight.Dialog" />
+          </resources>
+          EOF2
+          echo "=== Project files ==="
+          find app -type f -not -path "app/build/*" | sort
+
       - name: Add missing resources
         run: |
           R=app/src/main/res
@@ -126,3 +168,4 @@ jobs:
           name: FocusLock-APK
           path: app/build/outputs/apk/debug/*.apk
           retention-days: 14
+          

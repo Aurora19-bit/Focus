@@ -41,8 +41,21 @@ jobs:
               <rotate android:fromDegrees="-3" android:toDegrees="3" android:pivotX="50%" android:pivotY="100%" android:duration="1500" android:repeatMode="reverse" android:repeatCount="infinite" />
           </set>
           EOF2
-          cp $R/drawable/ic_launcher.xml $R/drawable/ic_launcher_foreground.xml
-          cp $R/mipmap-anydpi-v26/ic_launcher.xml $R/mipmap-anydpi-v26/ic_launcher_round.xml
+          mkdir -p $R/drawable $R/mipmap-anydpi-v26 $R/values
+          cat > $R/drawable/ic_launcher_foreground.xml <<'EOF2'
+          <vector xmlns:android="http://schemas.android.com/apk/res/android" android:width="108dp" android:height="108dp" android:viewportWidth="108" android:viewportHeight="108">
+              <path android:fillColor="#FFFFFF" android:pathData="M38,48h32v26h-32z"/>
+              <path android:strokeColor="#FFFFFF" android:strokeWidth="5" android:pathData="M44,48v-8a10,10 0 0,1 20,0v8"/>
+          </vector>
+          EOF2
+          for n in ic_launcher ic_launcher_round; do
+          cat > $R/mipmap-anydpi-v26/$n.xml <<'EOF2'
+          <adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
+              <background android:drawable="@color/emerald_dark"/>
+              <foreground android:drawable="@drawable/ic_launcher_foreground"/>
+          </adaptive-icon>
+          EOF2
+          done
 
       - name: Build debug APK
         run: gradle :app:assembleDebug --stacktrace --no-daemon

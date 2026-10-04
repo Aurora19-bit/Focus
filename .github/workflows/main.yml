@@ -12,6 +12,11 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
+      - name: Unpack project
+        run: |
+          rm -rf app/src app/build build
+          unzip -o FocusLock_project.zip -x ".github/*"
+
       - name: Set up Java 17
         uses: actions/setup-java@v4
         with:
@@ -22,9 +27,6 @@ jobs:
         uses: gradle/actions/setup-gradle@v3
         with:
           gradle-version: '8.7'
-
-      - name: Generate Complete Deep Ocean Sanctuary Project
-        run: python3 generate.py
 
       - name: Build Ocean Sanctuary APK
         run: gradle :app:assembleDebug --stacktrace --no-daemon
